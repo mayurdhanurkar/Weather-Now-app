@@ -1,6 +1,7 @@
 console.log("lets make an weather app");
 let currentUnit = "C";
 let lastWeatherData = null;
+let debounceTimer = null  
 
 const activeItems = ["text-cyan-400", "font-medium"];
 const inactiveItems = ["text-white/60", "hover:text-white", "transition-colors", "duration-300"];
@@ -123,13 +124,15 @@ async function fetchWeather(city) {
 
 const citySearch = document.getElementById("city-search");
 const searchBtn = document.getElementById("search-btn");
-citySearch.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
+citySearch.addEventListener("input", () => {
+    clearTimeout(debounceTimer)
     const city = citySearch.value.trim();
     if (city) {
-      fetchWeather(city);
+      if (city.length < 3) return
+      debounceTimer = setTimeout(() => {
+        fetchWeather(city);
+      }, 500);
     }
-  }
 });
 searchBtn.addEventListener("click", () => {
   const city = citySearch.value.trim();
