@@ -20,6 +20,9 @@
     />
   </head>
   <style>
+    html {
+    scroll-behavior: smooth;
+    }
     #recent-searches button:hover {
   color: white;
   cursor: pointer;
@@ -35,7 +38,7 @@
 
     <!-- HEADER / NAVBAR                               -->
     <header
-      class="w-full py-5 px-8 flex items-center justify-between border-b border-white/5 backdrop-blur-md bg-white/[0.02]"
+      class="w-full py-5 px-8 flex items-center justify-between border-b border-white/5 backdrop-blur-md bg-white/[0.02] sticky top-0 z-1000"
     >
       <!-- Logo -->
       <div class="flex items-center gap-3">
@@ -64,7 +67,7 @@
       <!-- Nav Links -->
       <nav id="navItems" class="flex items-center gap-8">
         <a href="#" class=" text-sm text-cyan-400 font-medium">Home</a>
-        <a href="#" class="text-sm text-white/60 hover:text-white transition-colors duration-300">Forecast</a>
+        <a href="#forecast" class="text-sm text-white/60 hover:text-white transition-colors duration-300">Forecast</a>
         <a href="#" class="text-sm text-white/60 hover:text-white transition-colors duration-300">Map</a>
         <a href="#" class="text-sm text-white/60 hover:text-white transition-colors duration-300">Settings</a>
       </nav>
@@ -435,13 +438,11 @@
       <!-- 5-DAY FORECAST                              -->
       <section id="forecast" class="mb-10">
         <h3 class="text-lg font-semibold text-white/70 mb-5">5-Day Forecast</h3>
-        <div
+        <div id="5dayforcast"
           class="rounded-2xl bg-white/[0.05] border border-white/[0.07] backdrop-blur-sm overflow-hidden divide-y divide-white/[0.05]"
         >
           <!-- Day 1 -->
-          <div
-            class="flex items-center justify-between px-8 py-5 hover:bg-white/[0.03] transition-colors duration-200"
-          >
+          <div class="flex items-center justify-between px-8 py-5 hover:bg-white/[0.03] transition-colors duration-200">
             <div class="w-32">
               <p class="font-semibold">Friday</p>
               <p class="text-xs text-white/30">20 Mar</p>
@@ -476,182 +477,14 @@
             </div>
           </div>
 
-          <!-- Day 2 -->
-          <div
-            class="flex items-center justify-between px-8 py-5 hover:bg-white/[0.03] transition-colors duration-200"
-          >
-            <div class="w-32">
-              <p class="font-semibold">Saturday</p>
-              <p class="text-xs text-white/30">21 Mar</p>
-            </div>
-            <div class="flex items-center gap-3 w-44">
-              <div class="relative w-10 h-10">
-                <div
-                  class="w-7 h-7 rounded-full bg-gradient-to-br from-yellow-300 to-orange-400 absolute top-0 left-0"
-                ></div>
-                <div
-                  class="w-8 h-5 rounded-full bg-gradient-to-br from-slate-300 to-slate-400/70 absolute bottom-0 right-0 shadow-sm"
-                ></div>
-              </div>
-              <span class="text-sm text-white/60">Partly Cloudy</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <svg
-                class="w-4 h-4 text-indigo-400/60"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 3c-1.2 2.4-5 7.2-5 10a5 5 0 0010 0c0-2.8-3.8-7.6-5-10z"
-                />
-              </svg>
-              <span class="text-sm text-white/40">55%</span>
-            </div>
-            <div class="flex items-center gap-4">
-              <span class="text-lg font-bold">33°</span>
-              <span class="text-lg text-white/30">21°</span>
-            </div>
-          </div>
-
-          <!-- Day 3 -->
-          <div
-            class="flex items-center justify-between px-8 py-5 hover:bg-white/[0.03] transition-colors duration-200"
-          >
-            <div class="w-32">
-              <p class="font-semibold">Sunday</p>
-              <p class="text-xs text-white/30">22 Mar</p>
-            </div>
-            <div class="flex items-center gap-3 w-44">
-              <!-- Rain icon -->
-              <div class="relative w-10 h-10">
-                <div
-                  class="w-9 h-6 rounded-full bg-gradient-to-br from-slate-400 to-slate-500 absolute top-1 left-0 shadow-sm"
-                ></div>
-                <div class="absolute bottom-0 left-2 flex gap-1.5">
-                  <div class="w-1 h-3 rounded-full bg-blue-400/70"></div>
-                  <div class="w-1 h-2 rounded-full bg-blue-400/50"></div>
-                  <div class="w-1 h-3 rounded-full bg-blue-400/60"></div>
-                </div>
-              </div>
-              <span class="text-sm text-white/60">Light Rain</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <svg
-                class="w-4 h-4 text-indigo-400/60"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 3c-1.2 2.4-5 7.2-5 10a5 5 0 0010 0c0-2.8-3.8-7.6-5-10z"
-                />
-              </svg>
-              <span class="text-sm text-white/40">78%</span>
-            </div>
-            <div class="flex items-center gap-4">
-              <span class="text-lg font-bold">28°</span>
-              <span class="text-lg text-white/30">20°</span>
-            </div>
-          </div>
-
-          <!-- Day 4 -->
-          <div
-            class="flex items-center justify-between px-8 py-5 hover:bg-white/[0.03] transition-colors duration-200"
-          >
-            <div class="w-32">
-              <p class="font-semibold">Monday</p>
-              <p class="text-xs text-white/30">23 Mar</p>
-            </div>
-            <div class="flex items-center gap-3 w-44">
-              <!-- Thunderstorm icon -->
-              <div class="relative w-10 h-10">
-                <div
-                  class="w-9 h-6 rounded-full bg-gradient-to-br from-slate-500 to-slate-700 absolute top-1 left-0 shadow-sm"
-                ></div>
-                <div class="absolute bottom-0 left-3">
-                  <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" />
-                  </svg>
-                </div>
-              </div>
-              <span class="text-sm text-white/60">Thunderstorm</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <svg
-                class="w-4 h-4 text-indigo-400/60"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 3c-1.2 2.4-5 7.2-5 10a5 5 0 0010 0c0-2.8-3.8-7.6-5-10z"
-                />
-              </svg>
-              <span class="text-sm text-white/40">88%</span>
-            </div>
-            <div class="flex items-center gap-4">
-              <span class="text-lg font-bold">26°</span>
-              <span class="text-lg text-white/30">19°</span>
-            </div>
-          </div>
-
-          <!-- Day 5 -->
-          <div
-            class="flex items-center justify-between px-8 py-5 hover:bg-white/[0.03] transition-colors duration-200"
-          >
-            <div class="w-32">
-              <p class="font-semibold">Tuesday</p>
-              <p class="text-xs text-white/30">24 Mar</p>
-            </div>
-            <div class="flex items-center gap-3 w-44">
-              <div class="relative w-10 h-10">
-                <div
-                  class="w-7 h-7 rounded-full bg-gradient-to-br from-yellow-300 to-orange-400 absolute top-0 left-0"
-                ></div>
-                <div
-                  class="w-8 h-5 rounded-full bg-gradient-to-br from-slate-300 to-slate-400/70 absolute bottom-0 right-0 shadow-sm"
-                ></div>
-              </div>
-              <span class="text-sm text-white/60">Partly Cloudy</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <svg
-                class="w-4 h-4 text-indigo-400/60"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 3c-1.2 2.4-5 7.2-5 10a5 5 0 0010 0c0-2.8-3.8-7.6-5-10z"
-                />
-              </svg>
-              <span class="text-sm text-white/40">50%</span>
-            </div>
-            <div class="flex items-center gap-4">
-              <span class="text-lg font-bold">31°</span>
-              <span class="text-lg text-white/30">21°</span>
-            </div>
-          </div>
+          
         </div>
       </section>
 
       <!-- HOURLY FORECAST                             -->
       <section id="hourly-forecast" class="mb-10">
         <h3 class="text-lg font-semibold text-white/70 mb-5">Hourly Forecast</h3>
-        <div class="flex gap-4 overflow-x-auto pb-2">
+        <div id="hourForcast" class="flex gap-4 overflow-x-auto pb-2">
           <!-- Hour 1 -->
           <div
             class="min-w-[100px] flex-shrink-0 rounded-2xl bg-gradient-to-b from-cyan-500/20 to-transparent border border-cyan-400/20 p-4 flex flex-col items-center gap-2"
