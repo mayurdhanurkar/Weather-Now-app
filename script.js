@@ -17,6 +17,31 @@ navItems.forEach((a) => {
   });
 });
 
+// Mobile Nav Toggle
+const hamburgerBtn = document.getElementById("hamburger-btn");
+const closeNavBtn = document.getElementById("close-nav-btn");
+const mobileNav = document.getElementById("mobile-nav");
+const mobileOverlay = document.getElementById("mobile-nav-overlay");
+const mobileNavLinks = document.querySelectorAll("#mobile-nav a");
+
+function openMobileNav() {
+  mobileNav.classList.add("open");
+  mobileOverlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeMobileNav() {
+  mobileNav.classList.remove("open");
+  mobileOverlay.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+hamburgerBtn.addEventListener("click", openMobileNav);
+closeNavBtn.addEventListener("click", closeMobileNav);
+mobileOverlay.addEventListener("click", closeMobileNav);
+mobileNavLinks.forEach((link) => {
+  link.addEventListener("click", closeMobileNav);
+});
+
 function degreesToDirection(degrees) {
   const directions = [
     "North",
@@ -213,22 +238,22 @@ function render5dayforcast(list) {
     const dayDate = date.toLocaleDateString("en", { day: "numeric", month: "short" });
 
     card.innerHTML = `
-          <div class="grid grid-cols-4 items-center justify-between border-b border-white/10 last:border-0 px-8 py-5 hover:bg-white/3 transition-colors duration-200">
-            <div class="w-32">
+          <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 border-b border-white/10 last:border-0 px-4 sm:px-8 py-4 sm:py-5 hover:bg-white/3 transition-colors duration-200">
+            <div class="w-full sm:w-32">
               <p class="font-semibold">${dayName}</p>
               <p class="text-xs text-white/30">${dayDate}</p>
             </div>
-            <div class="flex items-center gap-3 w-44 justify-center">
+            <div class="flex items-center gap-3 w-auto sm:w-44">
               <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png" alt="${item.weather[0].main}" class="w-10 h-10"/>
               <span class="text-sm text-white/60">${item.weather[0].description}</span>
             </div>
-            <div class="flex items-center gap-3 justify-center">
+            <div class="flex items-center gap-3">
               <svg class="w-4 h-4 text-indigo-400/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c-1.2 2.4-5 7.2-5 10a5 5 0 0010 0c0-2.8-3.8-7.6-5-10z"/>
               </svg>
               <span class="text-sm text-white/40">${Math.round(item.main.humidity)}%</span>
             </div>
-            <div class="flex items-center gap-4 justify-end">
+            <div class="flex items-center gap-4">
               <span class="text-lg font-bold">${Math.round(convertTemp(item.main.temp))}°</span>
               <span class="text-lg text-white/30">${Math.round(convertTemp(item.main.temp_min))}°</span>
             </div>
